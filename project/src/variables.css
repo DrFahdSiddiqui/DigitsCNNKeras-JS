@@ -1,15 +1,43 @@
+/****************************************************************************/
+/*                                                                          */
+/*                        DIGIT RECOGNITION CONVNET                         */
+/*                               Version 1.0                                */
+/*                          Written by: Leon Chen                           */
+/*                Modified by: Fahd Siddiqui and Aqsa Qureshi               */
+/*            https://github.com/DrFahdSiddiqui/DigitCNNKeras-JS            */
+/*                         Last updated: 8/18/2018                          */
+/*                                                                          */
+/* ------------------------------------------------------------------------ */
+/* LICENSE: MOZILLA 2.0                                                     */
+/*   This Source Code Form is subject to the terms of the Mozilla Public    */
+/*   License, v. 2.0. If a copy of the MPL was not distributed with this    */
+/*   file, You can obtain one at http://mozilla.org/MPL/2.0/.               */
+/****************************************************************************/
+
+/****************************************************************************/
+/* DOCUMENTATION                                                            */
+/*   Style variables for CSS                                                */
+/****************************************************************************/
+
+
+/****************************************************************************/
+
+
 :root {
-  --color-black: #000000;
-  --color-darkgray: #1b1b1b;
-  --color-lightgray: #dbdbdb;
-  --color-white: #ffffff;
+    --color-black: #000000;
+    --color-darkgray: #1b1b1b;
+    --color-lightgray: #dbdbdb;
+    --color-white: #ffffff;
 
-  --color-yellow: #f5d76e;
-  --color-red: #f22613;
-  --color-error: #d24d57;
+    --color-yellow: #f5d76e;
+    --color-red: #f22613;
+    --color-error: #d24d57;
 
-  --font-sans-serif: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    --font-sans-serif: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-monospace: 'Share Tech Mono', monospace;
-  --font-cursive: 'Nothing You Could Do', cursive;
+    --font-monospace: 'Share Tech Mono', monospace;
+    --font-cursive: 'Nothing You Could Do', cursive;
 }
+
+
+/****************************************************************************/

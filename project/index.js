@@ -6,14 +6,14 @@ import router from './router'
 import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Vuetify, {
-  theme: {
-      primary: '#ffffff',
-      secondary: '#dbdbdb',
-    accent: '#f5d76e',
-    error: '#d24d57'
-  }
+    theme: {
+        primary: '#ffffff',
+        secondary: '#dbdbdb',
+        accent: '#f5d76e',
+        error: '#d24d57'
+    }
 })
 
-const app = new Vue(Object.assign({ router }, App))
+const app = new Vue(Object.assign({router}, App))
 
 app.$mount('#root')

@@ -1,3 +1,27 @@
+##############################################################################
+#                                                                            #
+#                         DIGIT RECOGNITION CONVNET                          #
+#                                Version 1.0                                 #
+#                           Written by: Leon Chen                            #
+#                 Modified by: Fahd Siddiqui and Aqsa Qureshi                #
+#             https://github.com/DrFahdSiddiqui/DigitCNNKeras-JS             #
+#                          Last updated: 8/18/2018                           #
+#                                                                            #
+# -------------------------------------------------------------------------- #
+# LICENSE: MOZILLA 2.0                                                       #
+#   This Source Code Form is subject to the terms of the Mozilla Public      #
+#   License, v. 2.0. If a copy of the MPL was not distributed with this      #
+#   file, You can obtain one at http://mozilla.org/MPL/2.0/.                 #
+##############################################################################
+
+##############################################################################
+# DOCUMENTATION                                                              #
+#   Encodes the Python generated Keras H5 model into binary format           #
+##############################################################################
+
+
+##############################################################################
+
 #!/usr/bin/env python
 
 from __future__ import absolute_import
@@ -11,7 +35,7 @@ import argparse
 import uuid
 import model_pb2
 
-
+# -------------------------------------------------------------------------- #
 def quantize_arr(arr):
     """Quantization based on linear rescaling over min/max range.
     """
@@ -25,7 +49,7 @@ def quantize_arr(arr):
     max_val = max_val.astype(np.float32)
     return quantized, min_val, max_val
 
-
+# -------------------------------------------------------------------------- #
 class Encoder:
     """Encoder class.
 
@@ -38,16 +62,17 @@ class Encoder:
 
     See https://keras.io/getting-started/faq/#savingloading-whole-models-architecture-weights-optimizer-state
     """
-
+    # ---------------------------------------------------------------------- #
     def __init__(self, hdf5_model_filepath, name, quantize):
         if not hdf5_model_filepath:
             raise Exception('hdf5_model_filepath must be provided.')
         self.hdf5_model_filepath = hdf5_model_filepath
         self.name = name
         self.quantize = quantize
-
         self.create_model()
 
+
+    # ---------------------------------------------------------------------- #
     def create_model(self):
         """Initializes a model from the protobuf definition.
         """
@@ -55,6 +80,8 @@ class Encoder:
         self.model.id = str(uuid.uuid4())
         self.model.name = self.name
 
+
+    # ---------------------------------------------------------------------- #
     def serialize(self):
         """serialize method.
         Strategy for extracting the weights is adapted from the
@@ -88,6 +115,8 @@ class Encoder:
 
         hdf5_file.close()
 
+
+    # ---------------------------------------------------------------------- #
     def save(self):
         """Saves as binary protobuf message
         """
@@ -98,6 +127,7 @@ class Encoder:
         print('Saved to binary file {}'.format(os.path.abspath(pb_model_filepath)))
 
 
+# -------------------------------------------------------------------------- #
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('hdf5_model_filepath')
@@ -119,3 +149,6 @@ if __name__ == '__main__':
     encoder = Encoder(hdf5_model_filepath, name, quantize)
     encoder.serialize()
     encoder.save()
+
+
+##############################################################################
