@@ -101,10 +101,9 @@
 <script>
     import _ from 'lodash'
     import {mathUtils, tensorUtils} from '../utils'
-    import ModelStatus from './common/ModelStatus'
+    import ModelStatus from './ModelStatus'
 
-    const MODEL_FILEPATH_PD = 'https://transcranial.github.io/keras-js-demos-data/mnist_cnn/mnist_cnn.bin'
-    // const MODEL_FILEPATH_PROD = './../../project/model/mnist_cnn.bin'
+    // const MODEL_FILEPATH_PROD = 'https://transcranial.github.io/keras-js-demos-data/mnist_cnn/mnist_cnn.bin'
     const MODEL_FILEPATH_PROD = './project/model/mnist_cnn.bin'
 
 
