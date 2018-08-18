@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/transcranial/keras-js.git"
+    "url": "git+https://github.com/drfahdsiddiqui/digitscnnkeras-js.git"
   },
   "keywords": [
     "keras",
@@ -36,16 +36,16 @@
     "neural",
     "networks",
     "javascript",
-    "webgl",
-    "webgl2",
-    "gpu"
+    "Fahd",
+    "Siddiqui",
+    "Digit"
   ],
   "author": "Fahd Siddiuqi <www.fahdsiddiqui.com>",
   "license": "MPL",
   "bugs": {
     "url": "https://github.com/transcranial/keras-js/issues"
   },
-  "homepage": "https://github.com/transcranial/keras-js#readme",
+  "homepage": "http://fahdsiddiqui.x10.bz/digitscnnkeras-js/",
   "dependencies": {
     "@babel/polyfill": "7.0.0-beta.39",
     "axios": "^0.17.1",
