@@ -142,7 +142,7 @@
         async mounted() {
             await this.model.ready()
             await this.$nextTick()
-            this.getIntermediateOutputs()
+            // this.getIntermediateOutputs()
         },
 
         beforeDestroy() {
@@ -161,7 +161,7 @@
                 output: new Float32Array(10),
                 outputClasses: _.range(10),
                 layerOutputImages: [],
-                layerDisplayConfig: LAYER_DISPLAY_CONFIG,
+                //layerDisplayConfig: LAYER_DISPLAY_CONFIG,
                 drawing: false,
                 strokes: []
             }
@@ -196,7 +196,7 @@
                 }
             },
             clear() {
-                this.clearIntermediateOutputs()
+                //this.clearIntermediateOutputs()
                 const ctx = document.getElementById('input-canvas').getContext('2d')
                 ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
                 const ctxCenterCrop = document.getElementById('input-canvas-centercrop').getContext('2d')
@@ -280,62 +280,62 @@
 
                     this.model.predict({input: this.input}).then(outputData => {
                         this.output = outputData.output
-                        this.getIntermediateOutputs()
+                        //this.getIntermediateOutputs()
                     })
                 },
                 200,
                 {leading: true, trailing: true}
             ),
-            getIntermediateOutputs() {
-                const outputs = []
-                this.model.modelLayersMap.forEach((layer, name) => {
-                    if (name === 'input') return
-                    let images = []
-                    if (layer.hasOutput && layer.output && layer.output.tensor.shape.length === 3) {
-                        images = tensorUtils.unroll3Dtensor(layer.output.tensor)
-                    } else if (layer.hasOutput && layer.output && layer.output.tensor.shape.length === 2) {
-                        images = [tensorUtils.image2Dtensor(layer.output.tensor)]
-                    } else if (layer.hasOutput && layer.output && layer.output.tensor.shape.length === 1) {
-                        images = [tensorUtils.image1Dtensor(layer.output.tensor)]
-                    }
-                    outputs.push({layerClass: layer.layerClass || '', name, images})
-                })
-                this.layerOutputImages = outputs
-                setTimeout(() => {
-                    this.showIntermediateOutputs()
-                }, 0)
-            },
-            showIntermediateOutputs() {
-                this.layerOutputImages.forEach((output, layerNum) => {
-                    const scalingFactor = this.layerDisplayConfig[output.name].scalingFactor
-                    output.images.forEach((image, imageNum) => {
-                        const ctx = document.getElementById(`intermediate-output-${layerNum}-${imageNum}`).getContext('2d')
-                        ctx.putImageData(image, 0, 0)
-                        const ctxScaled = document
-                            .getElementById(`intermediate-output-${layerNum}-${imageNum}-scaled`)
-                            .getContext('2d')
-                        ctxScaled.save()
-                        ctxScaled.scale(scalingFactor, scalingFactor)
-                        ctxScaled.clearRect(0, 0, ctxScaled.canvas.width, ctxScaled.canvas.height)
-                        ctxScaled.drawImage(document.getElementById(`intermediate-output-${layerNum}-${imageNum}`), 0, 0)
-                        ctxScaled.restore()
-                    })
-                })
-            },
-            clearIntermediateOutputs() {
-                this.layerOutputImages.forEach((output, layerNum) => {
-                    const scalingFactor = this.layerDisplayConfig[output.name].scalingFactor
-                    output.images.forEach((image, imageNum) => {
-                        const ctxScaled = document
-                            .getElementById(`intermediate-output-${layerNum}-${imageNum}-scaled`)
-                            .getContext('2d')
-                        ctxScaled.save()
-                        ctxScaled.scale(scalingFactor, scalingFactor)
-                        ctxScaled.clearRect(0, 0, ctxScaled.canvas.width, ctxScaled.canvas.height)
-                        ctxScaled.restore()
-                    })
-                })
-            }
+            // getIntermediateOutputs() {
+            //     const outputs = []
+            //     this.model.modelLayersMap.forEach((layer, name) => {
+            //         if (name === 'input') return
+            //         let images = []
+            //         if (layer.hasOutput && layer.output && layer.output.tensor.shape.length === 3) {
+            //             images = tensorUtils.unroll3Dtensor(layer.output.tensor)
+            //         } else if (layer.hasOutput && layer.output && layer.output.tensor.shape.length === 2) {
+            //             images = [tensorUtils.image2Dtensor(layer.output.tensor)]
+            //         } else if (layer.hasOutput && layer.output && layer.output.tensor.shape.length === 1) {
+            //             images = [tensorUtils.image1Dtensor(layer.output.tensor)]
+            //         }
+            //         outputs.push({layerClass: layer.layerClass || '', name, images})
+            //     })
+            //     this.layerOutputImages = outputs
+            //     setTimeout(() => {
+            //         this.showIntermediateOutputs()
+            //     }, 0)
+            // },
+            // showIntermediateOutputs() {
+            //     this.layerOutputImages.forEach((output, layerNum) => {
+            //         const scalingFactor = this.layerDisplayConfig[output.name].scalingFactor
+            //         output.images.forEach((image, imageNum) => {
+            //             const ctx = document.getElementById(`intermediate-output-${layerNum}-${imageNum}`).getContext('2d')
+            //             ctx.putImageData(image, 0, 0)
+            //             const ctxScaled = document
+            //                 .getElementById(`intermediate-output-${layerNum}-${imageNum}-scaled`)
+            //                 .getContext('2d')
+            //             ctxScaled.save()
+            //             ctxScaled.scale(scalingFactor, scalingFactor)
+            //             ctxScaled.clearRect(0, 0, ctxScaled.canvas.width, ctxScaled.canvas.height)
+            //             ctxScaled.drawImage(document.getElementById(`intermediate-output-${layerNum}-${imageNum}`), 0, 0)
+            //             ctxScaled.restore()
+            //         })
+            //     })
+            // },
+            // clearIntermediateOutputs() {
+            //     this.layerOutputImages.forEach((output, layerNum) => {
+            //         const scalingFactor = this.layerDisplayConfig[output.name].scalingFactor
+            //         output.images.forEach((image, imageNum) => {
+            //             const ctxScaled = document
+            //                 .getElementById(`intermediate-output-${layerNum}-${imageNum}-scaled`)
+            //                 .getContext('2d')
+            //             ctxScaled.save()
+            //             ctxScaled.scale(scalingFactor, scalingFactor)
+            //             ctxScaled.clearRect(0, 0, ctxScaled.canvas.width, ctxScaled.canvas.height)
+            //             ctxScaled.restore()
+            //         })
+            //     })
+            // }
         }
     }
 </script>
