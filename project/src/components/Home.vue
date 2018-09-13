@@ -14,7 +14,7 @@
             <v-flex sm6 md4>
                 <div class="input-column">
                     <div class="input-container">
-                        <div class="input-label">Draw any digit (0-9) here <span class="arrow">⤸</span></div>
+                        <div class="input-label">Draw any digit (0-9) below: </div>
                         <div class="canvas-container">
                             <canvas
                                     id="input-canvas" width="240" height="240"
